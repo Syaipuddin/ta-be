@@ -51,13 +51,13 @@ export const getMenuByIDRepo = async (id) => {
 
 };
 
-export const getMenuByCategoryRepo = async (category) => {
+export const getMenusByCategoryRepo = async (category) => {
 
     try {
 
-        const menu = await Menu.find(category);
+        const menus = await Menu.find(category);
 
-        return menu;
+        return menus;
 
     } catch(err) {
 
