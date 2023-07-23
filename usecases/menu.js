@@ -6,12 +6,13 @@ import {
     addMenuRepo,
     updateMenuRepo,
     deleteMenuRepo
-    
-} from '../repo/menu/menu.js';
 
-export const getMenuUsecase = () => {
+} from '../repo/menus/menu.js';
 
-        return getMenusRepo();
+export const getMenusUsecase = async () => {
+
+        const menus = await getMenusRepo();
+        return menus;
 
 };
 

@@ -1,4 +1,4 @@
-import { Menu } from "../../models/menu";
+import { Menu } from "../../models/menu.js";
 
 export const addMenuRepo = async (body) => {
 
@@ -55,7 +55,7 @@ export const getMenusByCategoryRepo = async (category) => {
 
     try {
 
-        const menus = await Menu.find(category);
+        const menus = await Menu.find({category : category});
 
         return menus;
 

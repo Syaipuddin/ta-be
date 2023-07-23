@@ -1,17 +1,18 @@
 import {
 
-    getOrderUsecase,
-    getOrderByIDUSecase,
+    getOrdersUsecase,
+    getOrderByIDUsecase,
     updateOrderUsecase,
     deleteOrderUsecase,
+    addNewOrderUsecase,
 
 } from '../usecases/order.js';
 
-export const getOrder = async (req, res) => {
+export const getOrders = async (req, res) => {
 
     try {
 
-        const orders = await getOrderUsecase();
+        const orders = await getOrdersUsecase();
 
         res.json({
             data : orders
@@ -29,7 +30,7 @@ export const getOrderByID = async (req, res) => {
 
     try {
         const {id} = req.params;
-        const order = await getOrderByIDUSecase(id);
+        const order = await getOrderByIDUsecase(id);
 
         res.json({
             data : order
@@ -42,6 +43,23 @@ export const getOrderByID = async (req, res) => {
         });
     };
 };
+
+export const addNewOrder = async (req, res) => {
+
+    try {
+        const newOrder = await addNewOrderUsecase(req.body);
+
+        res.json({
+            data : newOrder
+        });
+
+    } catch(err) {
+
+        res.status(500).json({
+            error : err.message,
+        })
+    }
+}
 
 export const updateOrder = async (req, res) => {
 

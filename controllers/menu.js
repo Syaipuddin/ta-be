@@ -7,7 +7,7 @@ import {
     deleteMenuUsecase
 } from '../usecases/menu.js';
 
-export const addMenuUsecase = async (req, res) => {
+export const addMenu = async (req, res) => {
 
     try {
 

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import dotenv from 'dotenv';
+import appRouter from '../routes/app.js';
 
 const app = express();
 dotenv.config();
@@ -12,7 +13,7 @@ export const rest = async () => {
 
     try {
 
-        mongoose.connect(MONGO_URI, { useNewUrlParser : true});
+        mongoose.connect(MONGO_URI, { useNewUrlParser : true, family : 4});
         const db = mongoose.connection;
     
         db.on('error', (err) => {
@@ -22,12 +23,16 @@ export const rest = async () => {
         db.once('connected', () => {
             console.log(`DB Connected`);
             
-            app.use(express.json());
 
-            app.listen(PORT, () => {
-                console.log(`Connected on PORT = ${PORT}`);
-            });
     
+        });
+
+        app.use(express.json());
+
+        app.use(appRouter);
+
+        app.listen(PORT, () => {
+            console.log(`Connected on PORT = ${PORT}`);
         });
     
     } catch(err) {
