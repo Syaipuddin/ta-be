@@ -21,7 +21,16 @@ export const getOrderByIDUsecase = (id) => {
 
 export const addNewOrderUsecase = (body) => {
 
-    if(!body.table || !body.orders) {
+    let orderValidated = true;
+
+    body.orders.forEach( order => {
+        if ( !(order.menuId && order.qty) ) {
+            console.log(order.menuId & order.qty);
+            orderValidated = false;
+        }
+    });
+
+    if( !(orderValidated && body.table) ) {
         throw new Error(`Body tidak lengkap`);
     };
 

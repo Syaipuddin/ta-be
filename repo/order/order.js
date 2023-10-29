@@ -6,8 +6,9 @@ export const addNewOrderRepo = async (body) => {
 
         const newOrder = new Order({
             orderId : Order.length + 1,
+            orders : body.orders,
             table : body.table,
-            orders : body.orders
+            qty : body.qty
         })
 
         const savedOrder = await newOrder.save();
@@ -37,7 +38,7 @@ export const getOrderByIDRepo = async (id) => {
 
     try {
 
-        const order = await Order.findById(id);
+        const order = await Order.findById(id).populate('orders.menuId');
 
         return order;
 
@@ -52,8 +53,9 @@ export const updateOrderRepo = async (id, body) => {
     try {
 
         const updateOrder = {
+            menuId : body.menuId,
             table: body.table,
-            orders : body.orders
+            qty : body.qty
         };
 
         const updated =  Order.findByIdAndUpdate(id, body);

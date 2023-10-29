@@ -38,7 +38,7 @@ export const getOrderByID = async (req, res) => {
 
     } catch(err) {
 
-        res.statu(500).json({
+        res.status(500).json({
             error : err.message,
         });
     };
@@ -68,7 +68,7 @@ export const updateOrder = async (req, res) => {
         const result = await updateOrderUsecase(id, req.body);
 
         res.json({
-            data : result,
+            data : `Data Updated!`,
         });
 
     } catch(err) {
@@ -88,7 +88,7 @@ export const deleteOrder = async (req, res) => {
         const result = await deleteOrderUsecase(id);
 
         res.json({
-            data : result,
+            data : `Data Deleted`,
         });
 
     } catch (err) {

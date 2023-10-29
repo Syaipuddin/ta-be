@@ -51,7 +51,7 @@ export const getMenuByIDRepo = async (id) => {
 
 };
 
-export const getMenusByCategoryRepo = async (category) => {
+export const getMenusByCategoryRepo = async(category) => {
 
     try {
 

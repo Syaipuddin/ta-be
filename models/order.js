@@ -14,8 +14,12 @@ const orderSchema = new Schema({
     orders : [
 
         {
-            order : String,
-             qty : Number
+            menuId : 
+                {
+                    type : Schema.Types.ObjectId,
+                    ref: 'Menu'
+                },
+            qty : Number
         }
 
     ]

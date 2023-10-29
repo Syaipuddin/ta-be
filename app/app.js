@@ -31,7 +31,7 @@ export const rest = async () => {
 
         app.use(appRouter);
 
-        app.listen(PORT, () => {
+        app.listen(PORT, '127.0.0.1', () => {
             console.log(`Connected on PORT = ${PORT}`);
         });
     

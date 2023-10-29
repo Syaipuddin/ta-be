@@ -97,7 +97,7 @@ export const updateMenu = async (req, res) => {
         const result = await updateMenuUsecase(id, req.body);
 
         res.status(201).json({
-            data : result,
+            data : "data Updated!",
         })
 
     } catch(err) {
@@ -117,7 +117,7 @@ export const deleteMenu = async (req, res) => {
         const result = await deleteMenuUsecase(id);
 
         res.json({
-            data : result,
+            data : "data Deleted",
         });
         
     } catch(err) {
